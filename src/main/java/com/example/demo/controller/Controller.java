@@ -27,7 +27,13 @@ public class Controller {
 		
 		@RequestMapping("/orders")
 		public Object orderList(@RequestParam int table_no) {
-			return  service.myOrders(table_no);
+			
+			//return  
+			
+		
+			List<Purchase> p= service.myOrders(table_no);
+			
+			return  p;
 			//return null;
 			
 		}
@@ -44,5 +50,7 @@ public class Controller {
 			return service.menuItemss();
 			
 		}
+		
+		
 		
 }
