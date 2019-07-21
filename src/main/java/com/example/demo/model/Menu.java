@@ -13,19 +13,22 @@ public class Menu {
 	public String item_name;
 	public int price;
 	public int category;
+	public String image;
 	public Menu() {
 		super();
 	}
-	public Menu(int id, String item_name, int price, int category) {
+	@Override
+	public String toString() {
+		return "Menu [id=" + id + ", item_name=" + item_name + ", price=" + price + ", category=" + category
+				+ ", image=" + image + "]";
+	}
+	public Menu(int id, String item_name, int price, int category, String image) {
 		super();
 		this.id = id;
 		this.item_name = item_name;
 		this.price = price;
 		this.category = category;
-	}
-	@Override
-	public String toString() {
-		return "Menu [id=" + id + ", item_name=" + item_name + ", price=" + price + ", category=" + category + "]";
+		this.image = image;
 	}
 	public int getId() {
 		return id;
@@ -51,7 +54,12 @@ public class Menu {
 	public void setCategory(int category) {
 		this.category = category;
 	}
-
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
 	
 	
 	
