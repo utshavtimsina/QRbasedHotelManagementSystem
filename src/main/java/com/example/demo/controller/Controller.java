@@ -62,16 +62,21 @@ public class Controller {
 			
 		}
 		@RequestMapping("/welcome")
-		public Object menuItems() throws IOException {
+		public  Object menuItems() throws IOException {
 			
 			List<Menu> list = (List<Menu>) service.menuItemss();
 		
 			for(Menu l:list) {
 				
-				 
-				 byte[] fileContent = FileUtils.readFileToByteArray(new File("./image/20180309-french-fries-vicky-wasik-15-1500x1125.jpg"));
-				 l.setImage(  Base64.getEncoder().encodeToString(fileContent));   
-				 
+//				 if(l.getImage().equals("expresso.png")) {
+//					 l.setImage("help me");
+//				 }else {
+////				  
+//					 l.setImage("oh sure");
+//				 }
+//				 
+				 byte[] fileContent = FileUtils.readFileToByteArray(new File("./image/"+l.getImage()));
+				 l.setImage(  Base64.getEncoder().encodeToString(fileContent));	 
 				
 			}
 			return list;
