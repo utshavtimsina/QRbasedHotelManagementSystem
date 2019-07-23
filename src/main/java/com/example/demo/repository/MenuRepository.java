@@ -6,5 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.example.demo.model.Menu;
 @Repository
 public interface MenuRepository extends  CrudRepository <Menu, Integer>{
-	
+
+		
 }

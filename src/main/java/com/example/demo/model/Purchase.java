@@ -18,7 +18,7 @@ Purchase(){
 	public int quantity;
 	public Purchase(int id, int tableNo, int item_no, int quantity) {
 		super();
-		this.id = id;
+		//this.id = id;
 		this.tableNo = tableNo;
 		this.item_no = item_no;
 		this.quantity = quantity;

@@ -15,13 +15,16 @@ public class UserServices {
 	 @Autowired 
 	   UserRepository repository;
 	 @Autowired 
-	   MenuRepository menu;
+	   MenuRepository menuRe;
 	   
 	 public void UserService(UserRepository userRepository) {
 		 this.repository=userRepository;
 	 }
 	 public void addToPurchase(Purchase purchase) {
 		 repository.save(purchase);
+	}
+	 public void addToMenu(Menu menu) {
+		 menuRe.save(menu);
 	}
 	public List<Purchase> myOrders(int id) {
 		
@@ -31,7 +34,7 @@ public class UserServices {
 	public Object menuItemss(){
 		
 		
-		return   menu.findAll();
+		return   menuRe.findAll();
 	}
 	
 	

@@ -54,7 +54,8 @@ public class Controller {
 			
 		}
 		@RequestMapping("/tableNo")
-			void shows(@RequestParam int id,@RequestParam int table_no,@RequestParam int item_no,@RequestParam int quantity) {
+			void shows(@RequestParam int table_no,@RequestParam int item_no,@RequestParam int quantity) {
+			int id=1;
 			Purchase purchase= new Purchase(id,table_no,item_no,quantity );
 			service.addToPurchase(purchase);
 			//return purchase.toString();
@@ -66,7 +67,7 @@ public class Controller {
 			
 			List<Menu> list = (List<Menu>) service.menuItemss();
 		
-			for(Menu l:list) {
+			//for(Menu l:list) {
 				
 //				 if(l.getImage().equals("expresso.png")) {
 //					 l.setImage("help me");
@@ -74,11 +75,17 @@ public class Controller {
 ////				  
 //					 l.setImage("oh sure");
 //				 }
-//				 
-				 byte[] fileContent = FileUtils.readFileToByteArray(new File("./image/"+l.getImage()));
-				 l.setImage(  Base64.getEncoder().encodeToString(fileContent));	 
+				//  if(l.getId()>18) {
+			//	 byte[] fileContent = FileUtils.readFileToByteArray(new File("./image/"+l.getImage()));
+				// String s=Base64.getEncoder().encodeToString(fileContent);
+				// l.setImage( s);	
 				
-			}
+				//	 Menu menu= new Menu( l.getId(),l.getItem_name(), l.getPrice(), l.getCategory(), s);
+				//		service.addToMenu(menu);
+				// }
+				 
+				
+			//}
 			return list;
 			
 		}
