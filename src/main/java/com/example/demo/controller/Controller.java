@@ -4,23 +4,29 @@ package com.example.demo.controller;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.Base64;
 import java.util.List;
 
 import javax.imageio.ImageIO;
 
+import org.apache.commons.io.IOUtils;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.model.Menu;
 import com.example.demo.model.Purchase;
 import com.example.demo.services.UserServices;
-
+import sun.misc.BASE64Encoder;
+import sun.misc.BASE64Decoder;
 @RestController
 public class Controller {
 
@@ -55,36 +61,40 @@ public class Controller {
 			
 		}
 		@RequestMapping("/welcome")
-		public Object menuItems() {
+		public Object menuItems() throws IOException {
 			
-			return service.menuItemss();
+			List<Menu> list = (List<Menu>) service.menuItemss();
+		
+			for(Menu l:list) {
+				
+				 BufferedImage img = ImageIO.read(new File("./image/double_expresso.jpg"));
+			        String imgstr;
+			        imgstr = encodeToString(img, "png");
+				l.setImage("data:image/png;base64,"+imgstr); 
+			}
+			return list;
 			
 		}
-		
-//		@RequestMapping(value = "/getImage", method = RequestMethod.GET)
-//		  public void showImage(HttpServletResponse response) throws Exception {
-//
-//		    ByteArrayOutputStream jpegOutputStream = new ByteArrayOutputStream();
-//
-//		    try {
-//		    	File f = new File("./image/blacktea.jpg");
-//		      BufferedImage image = ImageIO.read(f);
-//		      ImageIO.write(image, "jpeg", jpegOutputStream);
-//		    } catch (IllegalArgumentException e) {
-//		      response.sendError(HttpServletResponse.SC_NOT_FOUND);
-//		    }
-//
-//		    byte[] imgByte = jpegOutputStream.toByteArray();
-//
-//		    response.setHeader("Cache-Control", "no-store");
-//		    response.setHeader("Pragma", "no-cache");
-//		    response.setDateHeader("Expires", 0);
-//		    response.setContentType("image/jpeg");
-//		    ServletOutputStream responseOutputStream = response.getOutputStream();
-//		    responseOutputStream.write(imgByte);
-//		    responseOutputStream.flush();
-//		    responseOutputStream.close();
-//		  }
+	
+		public static String encodeToString(BufferedImage image, String type) {
+	        String imageString = null;
+	        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+
+	        try {
+	            ImageIO.write(image, type, bos);
+	            byte[] imageBytes = bos.toByteArray();
+
+	            BASE64Encoder encoder = new BASE64Encoder();
+	            imageString = encoder.encode(imageBytes);
+
+	            bos.close();
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        } finally {
+			}
+	        return imageString;
+	    }
+//		
 //		
 		@RequestMapping(value = "/Image", consumes = MediaType.ALL_VALUE, produces = MediaType.IMAGE_JPEG_VALUE)
 		@ResponseBody
