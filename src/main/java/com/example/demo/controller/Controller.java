@@ -12,6 +12,7 @@ import java.util.List;
 
 import javax.imageio.ImageIO;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,33 +68,34 @@ public class Controller {
 		
 			for(Menu l:list) {
 				
-				 BufferedImage img = ImageIO.read(new File("./image/double_expresso.jpg"));
-			        String imgstr;
-			        imgstr = encodeToString(img, "png");
-				l.setImage("data:image/png;base64,"+imgstr); 
+				 
+				 byte[] fileContent = FileUtils.readFileToByteArray(new File("./image/20180309-french-fries-vicky-wasik-15-1500x1125.jpg"));
+				 l.setImage(  Base64.getEncoder().encodeToString(fileContent));   
+				 
+				
 			}
 			return list;
 			
 		}
 	
-		public static String encodeToString(BufferedImage image, String type) {
-	        String imageString = null;
-	        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-
-	        try {
-	            ImageIO.write(image, type, bos);
-	            byte[] imageBytes = bos.toByteArray();
-
-	            BASE64Encoder encoder = new BASE64Encoder();
-	            imageString = encoder.encode(imageBytes);
-
-	            bos.close();
-	        } catch (IOException e) {
-	            e.printStackTrace();
-	        } finally {
-			}
-	        return imageString;
-	    }
+//		public static String encodeToString(BufferedImage image, String type) {
+//	        String imageString = null;
+//	        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+//
+//	        try {
+//	            ImageIO.write(image, type, bos);
+//	            byte[] imageBytes = bos.toByteArray();
+//
+//	            BASE64Encoder encoder = new BASE64Encoder();
+//	            imageString = encoder.encode(imageBytes);
+//
+//	            bos.close();
+//	        } catch (IOException e) {
+//	            e.printStackTrace();
+//	        } finally {
+//			}
+//	        return imageString;
+//	    }
 //		
 //		
 		@RequestMapping(value = "/Image", consumes = MediaType.ALL_VALUE, produces = MediaType.IMAGE_JPEG_VALUE)
