@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 21, 2019 at 07:20 AM
+-- Generation Time: Jul 23, 2019 at 02:11 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.4
 
@@ -49,6 +49,18 @@ INSERT INTO `categories` (`id`, `category_name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `dog`
+--
+
+CREATE TABLE `dog` (
+  `id` bigint(20) NOT NULL,
+  `age` int(11) NOT NULL,
+  `name` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `hibernate_sequence`
 --
 
@@ -61,7 +73,10 @@ CREATE TABLE `hibernate_sequence` (
 --
 
 INSERT INTO `hibernate_sequence` (`next_val`) VALUES
-(6);
+(6),
+(1),
+(1),
+(1);
 
 -- --------------------------------------------------------
 
@@ -85,7 +100,7 @@ INSERT INTO `menu` (`id`, `item_name`, `price`, `category`, `image`) VALUES
 (1, 'Expresso : Single shot coffee', 65, 1, 'expresso.png'),
 (2, 'Double expresso: Double shot of coffee', 120, 1, 'double_expresso.jpg'),
 (3, 'Americano:', 80, 1, 'americano.jpg'),
-(4, 'Cappuccino', 80, 1, ''),
+(4, 'Cappuccino:', 80, 1, 'cappuchino.jpeg'),
 (5, 'Mocha:', 175, 1, 'mocha.jpg'),
 (6, 'Black Tea:', 50, 1, 'blacktea.jpg'),
 (7, 'Green Tea:', 80, 1, 'greenTea.jpg'),
@@ -165,6 +180,12 @@ CREATE TABLE `user` (
 -- Indexes for table `categories`
 --
 ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `dog`
+--
+ALTER TABLE `dog`
   ADD PRIMARY KEY (`id`);
 
 --
