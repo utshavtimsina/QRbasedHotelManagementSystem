@@ -1,8 +1,7 @@
 package com.example.demo.services;
 
-import java.util.List;
-import java.util.Optional;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -30,7 +29,9 @@ public class UserServices {
 	 }
 	 
 	public Object menuItemss(){
-		return  menu.findAll();
+		
+		
+		return   menu.findAll();
 	}
 	
 	

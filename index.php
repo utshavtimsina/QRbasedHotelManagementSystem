@@ -118,7 +118,7 @@
 			
 			//alert(confirm("Are you sure you want to delete this car?"));
 			if(confirm("Are you sure you want to delete this?")){
-				window.location.href ="delete.php?id="+id+"&table=notice";
+				window.location.href ="delete.php?id="+id+"&table=menu";
 			}
 		}
 		function edit(id){

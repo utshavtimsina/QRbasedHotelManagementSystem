@@ -12,14 +12,13 @@
 			<div id="top-navigation">
 				Welcome <a href="#"><strong>Administrator</strong></a>
 				<span>|</span>
-				<a href="logout.php">Log out</a>
+				<a href="index.php">Log out</a>
 			</div>
 		</div>
 <div id="navigation">
 			<ul>
-			    <li><a href="index.php"><span>Announcements</span></a></li>
-			    <li><a href="Image.php"><span>Image Gallery</span></a></li>
-				<li><a href="message.php"><span>Students Message</span></a></li>
+			    <li><a href="index.php"><span>Menu LIst</span></a></li>
+			 
 	
 			</ul>
 		</div>
