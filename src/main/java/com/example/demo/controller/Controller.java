@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Base64;
 import java.util.List;
+import java.util.Optional;
 
 import javax.imageio.ImageIO;
 
@@ -26,8 +27,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.model.Menu;
 import com.example.demo.model.Purchase;
 import com.example.demo.services.UserServices;
-import sun.misc.BASE64Encoder;
-import sun.misc.BASE64Decoder;
+//import sun.misc.BASE64Encoder;
+//import sun.misc.BASE64Decoder;
 @RestController
 public class Controller {
 
@@ -65,27 +66,23 @@ public class Controller {
 		@RequestMapping("/welcome")
 		public  Object menuItems() throws IOException {
 			
-			List<Menu> list = (List<Menu>) service.menuItemss();
+		List<Menu> list = (List<Menu>) service.menuItemss();
 		
-			//for(Menu l:list) {
-				
-//				 if(l.getImage().equals("expresso.png")) {
-//					 l.setImage("help me");
-//				 }else {
-////				  
-//					 l.setImage("oh sure");
-//				 }
-				//  if(l.getId()>18) {
-			//	 byte[] fileContent = FileUtils.readFileToByteArray(new File("./image/"+l.getImage()));
-				// String s=Base64.getEncoder().encodeToString(fileContent);
-				// l.setImage( s);	
-				
-				//	 Menu menu= new Menu( l.getId(),l.getItem_name(), l.getPrice(), l.getCategory(), s);
-				//		service.addToMenu(menu);
-				// }
-				 
-				
-			//}
+//			for(Menu l:list) {
+//				
+////				 if(l.getImage().equals("expresso.png")) {
+////					 l.setImage("help me");
+////				 }else {
+//////				  
+////					 l.setImage("oh sure");
+////				 }
+//				//  if(l.getId()>18) {
+//				 byte[] fileContent = FileUtils.readFileToByteArray(new File("./image/"+l.getImage()));
+//			// String s=Base64.getEncoder().encodeToString(fileContent);
+//				 l.setImage( Base64.getEncoder().encodeToString(fileContent));	
+//			
+//				
+//			}
 			return list;
 			
 		}
@@ -110,9 +107,22 @@ public class Controller {
 //	    }
 //		
 //		
+		
+		@RequestMapping(value = "/id")
+		public Object sendPath(@RequestParam int id) {
+			
+			
+				return service.getById(id);
+			
+		}
+		
+		
+		
 		@RequestMapping(value = "/Image", consumes = MediaType.ALL_VALUE, produces = MediaType.IMAGE_JPEG_VALUE)
-		@ResponseBody
-		public ResponseEntity<byte[]> getImage(@RequestParam String name) throws IOException {
+		
+		
+	@ResponseBody
+	public ResponseEntity<byte[]> getImage(@RequestParam String name) throws IOException {
 			String loc="./image/"+name;
 			//loc.concat(name);
 			File f = new File(loc);
@@ -122,7 +132,7 @@ public class Controller {
 		      baos.flush();
 		      byte[] images = baos.toByteArray();
 		      baos.close();
-		    //byte[] image = imageService.getImage(id);  //this just gets the data from a database
+		   
 		    return ResponseEntity.ok(images);
 		}
 }
