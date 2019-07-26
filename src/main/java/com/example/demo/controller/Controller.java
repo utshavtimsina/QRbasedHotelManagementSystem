@@ -57,7 +57,7 @@ public class Controller {
 		@RequestMapping("/tableNo")
 			void shows(@RequestParam int table_no,@RequestParam int item_no,@RequestParam int quantity) {
 			int id=1;
-			Purchase purchase= new Purchase(id,table_no,item_no,quantity );
+			Purchase purchase= new Purchase(id,table_no,item_no,quantity,1 );
 			service.addToPurchase(purchase);
 			//return purchase.toString();
 			

@@ -18,7 +18,8 @@
 <div id="navigation">
 			<ul>
 			    <li><a href="index.php"><span>Menu LIst</span></a></li>
-			 
+				<li><a href="orders.php"><span>orders</span></a></li>
+				<li><a href="orders.php"><span>payment</span></a></li>
 	
 			</ul>
 		</div>

@@ -16,13 +16,7 @@ Purchase(){
 	public int tableNo;
 	public int item_no;
 	public int quantity;
-	public Purchase(int id, int tableNo, int item_no, int quantity) {
-		super();
-		//this.id = id;
-		this.tableNo = tableNo;
-		this.item_no = item_no;
-		this.quantity = quantity;
-	}
+	public int status;
 	public int getId() {
 		return id;
 	}
@@ -47,9 +41,25 @@ Purchase(){
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
+	}
 	@Override
 	public String toString() {
-		return "Purchase [id=" + id + ", tableNo=" + tableNo + ", item_no=" + item_no + ", quantity=" + quantity + "]";
+		return "Purchase [id=" + id + ", tableNo=" + tableNo + ", item_no=" + item_no + ", quantity=" + quantity
+				+ ", status=" + status + "]";
 	}
+	public Purchase(int id, int tableNo, int item_no, int quantity, int status) {
+		super();
+		//this.id = id;
+		this.tableNo = tableNo;
+		this.item_no = item_no;
+		this.quantity = quantity;
+		this.status = status;
+	}
+	
 	
 }
